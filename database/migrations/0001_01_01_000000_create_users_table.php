@@ -37,12 +37,6 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345678'),
-            'role' => 'admin',
-        ]);
     }
 
 
