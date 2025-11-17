@@ -13,6 +13,7 @@ class Lesson extends Model
         'description',
         'content',
         'video_url',
+        'video',
         'order',
         'is_published',
         'duration',

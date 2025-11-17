@@ -15,7 +15,7 @@ class LevelForm
             ->components([
                 TextInput::make('name')
                     ->required()
-                    ->live()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, $set) {
                         $set('slug', Str::slug($state));
                     }),
