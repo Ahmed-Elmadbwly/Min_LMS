@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class LessonsTable
@@ -19,9 +20,9 @@ class LessonsTable
                 TextColumn::make('course_id')
                     ->label('Course')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()->searchable(),
                 TextColumn::make('title')
-                    ->searchable(),
+                    ->searchable()->searchable(),
                 TextColumn::make('order')
                     ->numeric()
                     ->sortable(),
@@ -42,7 +43,16 @@ class LessonsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('is_published')
+                    ->options([
+                        '1' => 'Published',
+                        '0' => 'Not published',
+                    ]),
+                SelectFilter::make('Free')
+                    ->options([
+                        '0' => 'Paid',
+                        '1' => 'Free',
+                    ]),
             ])
             ->recordActions([
                 ViewAction::make(),

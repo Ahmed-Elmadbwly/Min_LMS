@@ -10,6 +10,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class CoursesTable
@@ -27,16 +28,19 @@ class CoursesTable
                     ->boolean(),
                 TextColumn::make('price')
                     ->money()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('discount')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('discount_expire')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('status'),
                 TextColumn::make('lesson_num'),
-                TextEntry::make('level.name')->label('Level'),
+                TextColumn::make('level.name')->label('Level'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -47,7 +51,16 @@ class CoursesTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                    ->options([
+                        'published' => 'Published',
+                        'unpublished' => 'Not published',
+                    ]),
+                SelectFilter::make('paid')
+                    ->options([
+                        '1' => 'Paid',
+                        '0' => 'Free',
+                    ]),
             ])
             ->recordActions([
                 ViewAction::make(),
