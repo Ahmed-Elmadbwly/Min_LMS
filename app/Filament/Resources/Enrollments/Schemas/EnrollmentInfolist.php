@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Filament\Resources\Enrollments\Schemas;
+
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Schema;
+
+class EnrollmentInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextEntry::make('student.name')->label('Student'),
+                TextEntry::make('course.title')->label('Course'),
+                TextEntry::make('created_at')->label('Enrolled at'),
+                TextEntry::make('status'),
+            ]);
+    }
+}

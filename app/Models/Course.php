@@ -21,4 +21,16 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+    public function scopeNotEnrolledBy($query, $studentId)
+    {
+        return $query->whereDoesntHave('enrollments', function ($q) use ($studentId) {
+            $q->where('student_id', $studentId);
+        });
+    }
 }

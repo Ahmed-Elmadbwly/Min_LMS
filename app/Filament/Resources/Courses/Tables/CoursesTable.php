@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -35,9 +36,7 @@ class CoursesTable
                     ->sortable(),
                 TextColumn::make('status'),
                 TextColumn::make('lesson_num'),
-                TextColumn::make('level_id')
-                    ->numeric()
-                    ->sortable(),
+                TextEntry::make('level.name')->label('Level'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
