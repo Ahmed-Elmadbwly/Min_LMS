@@ -1,7 +1,7 @@
 <div>
-    <div class="flex  justify-between items-center">
+    <div class="flex m-40 justify-between items-center">
         <span class="text-2xl font-semibold tracking-tight ml-8 text-blue-600">Courses</span>
-        <a class="bg-gray-100 mr-8 text-black px-4 py-2 rounded">show all</a>
+        <a href="{{route('courses')}}"  class="bg-gray-100 mr-8 text-black px-4 py-2 rounded">show all</a>
     </div>
 
     <div class="flex flex-wrap justify-around">
