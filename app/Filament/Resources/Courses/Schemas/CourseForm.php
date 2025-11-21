@@ -45,6 +45,7 @@ class CourseForm
                         ->description('image')
                         ->schema([
                             FileUpload::make('image')
+                                ->disk('public')
                                 ->image(),
                         ]),
                     Step::make('pricing')
